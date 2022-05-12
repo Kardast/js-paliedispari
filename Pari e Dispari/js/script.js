@@ -1,82 +1,45 @@
-// Lezione--------------------------------------------------
+// Pari e Dispari
+// L’utente sceglie pari o dispari e inserisce un numero da 1 a 5.
+// Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).
+// Sommiamo i due numeri
+// Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
+// Dichiariamo chi ha vinto.
 
-// Prova 1---
+let evenOdd = prompt("Scegli pari o dispari");
+let myNum = parseInt(prompt("Inserisci un numero da 1 a 5"));
+console.log("Il mio numero è:", myNum);
 
-let ranNum = getRandomNum(50, 100);
+let pcRanNum = pcNum();
+console.log("Il numero del pc è:", pcRanNum);
 
-console.log("numero 1", ranNum);
+let sumNums = myNum + pcRanNum;
+console.log("La somma è:", sumNums);
 
+let sumResult = sumEvenOdd(sumNums);
+console.log(sumResult);
 
-// 1000 LOC
-
-let ranNum2 = getRandomNum(50, 100);
-
-console.log("numero 2", ranNum2);
-
-
-// la mia funzione che genera numeri random da 50 a 100
-function getRandomNum(rangeMin, rangeMax){
-
-    let result = Math.floor(Math.random() * (rangeMax - rangeMin + 1)) + rangeMin;
-
-    return result;
+if (sumResult === evenOdd) {
+    console.log("hai vinto");
+} else {
+    console.log("Hai perso");
 }
 
 
-// Prova 2---
+// functions
+// random numer
+function pcNum() {
+    let ranNum = Math.floor(Math.random() * 5) + 1;
 
-for (let i = 1; i <= 10; i++) {
-    // let min = i + 10;
-    // let max = i * 10;
-    let numRand2 = getRandomNumMinMax(i + 10, i * 10);
-    console.log(numRand2);
-
+    return ranNum;
 }
 
-function getRandomNumMinMax(rangeMin, rangeMax){
-
-    let result = Math.floor(Math.random() * (rangeMax - rangeMin + 1)) + rangeMin;
-
-    return result;
-}
-
-
-
-// Prova 3---
-
-// let userNum = parseInt(prompt("inserisci un numero"));
-
-let userNum = getRandomNumMinMax(10, 50);
-console.log('il numero generato è', userNum);
-
-let pariODispariResult = pariODispari(userNum);
-
-console.log(pariODispariResult);
-
-// funzionalità del programma
-function getRandomNumMinMax(rangeMin, rangeMax){
-
-    let result = Math.floor(Math.random() * (rangeMax - rangeMin + 1)) + rangeMin;
-
-    return result;
-}
-
-function pariODispari(numeroCheck) {
-    // ritorna una stringa "pari" se il numero passato è pariODispari, sennò dispari
-    if (numeroCheck % 2 === 0) {
+// check if sum is even or odd
+function sumEvenOdd(sum) {
+    if (sum % 2 === 0) {
+        // let even;
         return "pari";
     } else {
+        // let odd;
         return "dispari";
     }
 }
-
-
-// es1
-// riprodurre il giochino di pari o dispari però i nquesto caso utilizzando funzioni il più possibile
-// il fatto di generare numeri random 
-// il fatto di fare check se il numero è pari o dispari
-
-
-// es2
-// chiediamo una parola e diciamo se la parola è palindroma o no
-// creare una funzione che dice come stringa se è palindroma o no
